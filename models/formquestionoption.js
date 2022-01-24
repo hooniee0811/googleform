@@ -18,11 +18,12 @@ module.exports = (sequelize, DataTypes) => {
   FormQuestionOption.init({
     id: {
       allowNull: false,
-      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
       type: DataTypes.UUID
     },
     formQuestionId: DataTypes.UUID,
+    order: DataTypes.INTEGER,
     title: DataTypes.STRING,
     desc: DataTypes.STRING
   }, {

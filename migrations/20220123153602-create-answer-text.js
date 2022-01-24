@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('FormQuestionOptions', {
+    await queryInterface.createTable('AnswerTexts', {
       id: {
         allowNull: false,
         defaultValue: Sequelize.UUIDV4,
@@ -11,10 +11,7 @@ module.exports = {
       formQuestionId: {
         type: Sequelize.UUID
       },
-      title: {
-        type: Sequelize.STRING
-      },
-      desc: {
+      answerText: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -28,6 +25,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('FormQuestionOptions');
+    await queryInterface.dropTable('AnswerTexts');
   }
 };

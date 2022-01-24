@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class FormQuestion extends Model {
+  class AnswerOption extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,26 +11,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      const Form = models.Form
-      Form.hasMany(FormQuestion)
+      const FormQuestion = models.FormQuestion
+      FormQuestion.hasMany(AnswerOption)
     }
   }
-  FormQuestion.init({
+  AnswerOption.init({
     id: {
       allowNull: false,
-      primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
       type: DataTypes.UUID
     },
-    order: DataTypes.INTEGER,
-    formId: DataTypes.UUID,
-    title: DataTypes.STRING,
-    desc: DataTypes.STRING,
-    qType: DataTypes.STRING,
-    FormOrder: DataTypes.INTEGER
+    formQuestionId: DataTypes.UUID,
+    answerOptionId: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'FormQuestion',
+    modelName: 'AnswerOption',
   });
-  return FormQuestion;
+  return AnswerOption;
 };
